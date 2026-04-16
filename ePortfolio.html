@@ -1,0 +1,552 @@
+﻿<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ePortfolio - Trần Bảo Long</title>
+    <script>
+      document.documentElement.classList.add("has-js");
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --surface: #ffffff;
+        --surface-soft: #f8fbff;
+        --text: #1c2430;
+        --muted: #526171;
+        --primary: #006d77;
+        --primary-strong: #00545d;
+        --border: #dbe6f1;
+        --shadow: 0 10px 28px rgba(18, 38, 63, 0.08);
+        --radius-lg: 20px;
+        --radius-md: 14px;
+        --space: clamp(16px, 2.2vw, 28px);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Be Vietnam Pro", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 15% 0%, #dceeff 0%, transparent 40%),
+          linear-gradient(170deg, #f9fbfe 0%, #eef4fb 100%);
+        line-height: 1.65;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--primary-strong);
+      }
+
+      .wrapper {
+        width: min(1020px, 92vw);
+        margin: 0 auto;
+        padding: clamp(20px, 4vw, 40px) 0 48px;
+      }
+
+      .quick-nav {
+        position: sticky;
+        top: 10px;
+        z-index: 10;
+        margin-bottom: var(--space);
+      }
+
+      .quick-nav ul {
+        margin: 0;
+        padding: 10px;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        box-shadow: 0 8px 18px rgba(18, 38, 63, 0.08);
+      }
+
+      .quick-nav a {
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #21405f;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+
+      .quick-nav a:hover {
+        color: #ffffff;
+        background: #1f5f90;
+      }
+
+      .hero {
+        background:
+          linear-gradient(140deg, rgba(0, 109, 119, 0.96), rgba(9, 91, 126, 0.9)),
+          linear-gradient(220deg, rgba(255, 209, 102, 0.28), transparent 55%);
+        color: #fff;
+        border-radius: var(--radius-lg);
+        padding: clamp(22px, 4vw, 40px);
+        box-shadow: var(--shadow);
+        display: grid;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .hero__avatar {
+        width: clamp(94px, 20vw, 140px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.7);
+        object-fit: cover;
+        object-position: center 0%;
+        margin-top: 24px;
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-size: clamp(1.8rem, 4.2vw, 2.7rem);
+        line-height: 1.2;
+      }
+
+      .hero__role {
+        margin: 8px 0 0;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+      }
+
+      .hero__summary {
+        margin: 8px 0 0;
+        max-width: 65ch;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .hero__content {
+        display: grid;
+        gap: 14px;
+      }
+
+      .hero__info {
+        margin: 0;
+        padding: 14px;
+        list-style: none;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        display: grid;
+        gap: 8px;
+        max-width: 520px;
+      }
+
+      .hero__info li {
+        font-size: 0.96rem;
+        color: rgba(255, 255, 255, 0.95);
+      }
+
+      main {
+        margin-top: var(--space);
+        display: grid;
+        gap: var(--space);
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: clamp(16px, 2.8vw, 28px);
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(18, 38, 63, 0.12);
+      }
+
+      .card h2 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: clamp(1.15rem, 3vw, 1.45rem);
+        color: #122034;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .info-list,
+      .skills-list,
+      .contact-list {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+
+      .info-list li,
+      .skills-list li,
+      .contact-list li {
+        margin-bottom: 8px;
+      }
+
+      .projects {
+        display: grid;
+        gap: 16px;
+      }
+
+      .project-card {
+        border: 1px solid var(--border);
+        background: var(--surface-soft);
+        border-radius: var(--radius-md);
+        padding: 16px;
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(22, 44, 74, 0.12);
+      }
+
+      .project-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+      }
+
+      .project-card p {
+        margin: 0 0 10px;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .tag {
+        border: 1px solid #bcd6dd;
+        background: #e8f4f6;
+        color: #12424a;
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+
+      .button-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        border: 1px solid transparent;
+        padding: 9px 14px;
+        background: var(--primary);
+        color: #fff;
+        font-weight: 600;
+        transition: 0.25s ease;
+      }
+
+      .button-link:hover {
+        color: #fff;
+        background: var(--primary-strong);
+      }
+
+      .button-link:focus-visible,
+      .contact-list a:focus-visible,
+      .quick-nav a:focus-visible {
+        outline: 3px solid rgba(255, 209, 102, 0.7);
+        outline-offset: 2px;
+      }
+
+      .cert-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .cert-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        background: var(--surface-soft);
+        padding: 14px;
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+      }
+
+      .cert-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(22, 44, 74, 0.12);
+      }
+
+      .cert-card img {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid #cbd9e8;
+        object-fit: cover;
+      }
+
+      .cert-card figcaption {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .contact-list a {
+        word-break: break-word;
+      }
+
+      .has-js [data-reveal] {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+
+      .has-js [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (min-width: 760px) {
+        .hero {
+          grid-template-columns: auto 1fr;
+          gap: 26px;
+        }
+
+        .hero__avatar {
+          margin-top: 32px;
+          align-self: start;
+        }
+
+        .cert-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav class="quick-nav" aria-label="Điều hướng nhanh">
+        <ul>
+          <li><a href="#gioi-thieu">Giới thiệu</a></li>
+          <li><a href="#muc-tieu">Mục tiêu</a></li>
+          <li><a href="#ky-nang">Kỹ năng</a></li>
+          <li><a href="#du-an">Dự án</a></li>
+          <li><a href="#chung-chi">Chứng chỉ</a></li>
+          <li><a href="#lien-he">Liên hệ</a></li>
+        </ul>
+      </nav>
+
+      <header class="hero" data-reveal>
+        <img class="hero__avatar" src="image/AnhChanDung.jpg" alt="Ảnh chân dung Trần Bảo Long"/>
+        <div class="hero__content">
+          <h1>Trần Bảo Long</h1>
+          <ul class="hero__info" aria-label="Thông tin cá nhân">
+            <li>Ngành: Công nghệ phần mềm</li>
+            <li>Lớp: ST23C</li>
+            <li>SĐT: 0833 848 455</li>
+            <li>Email: tblong.it@gmail.com</li>
+            <li>GPA: 2.8/4.0</li>
+          </ul>
+        </div>
+      </header>
+
+      <main>
+        <section class="card" aria-labelledby="gioi-thieu" data-reveal>
+          <h2 id="gioi-thieu">Giới thiệu</h2>
+          <p>
+            Tôi là sinh viên ngành Công nghệ Thông tin, định hướng trở thành Full-Stack Developer
+            với nền tảng về phát triển web. Tôi có kinh nghiệm xây dựng các dự án như website bán
+            hàng, hệ thống nhắn tin và ứng dụng quản lý; trong đó đảm nhận vai trò phát triển chức
+            năng và phối hợp làm việc nhóm. Tôi có khả năng sử dụng HTML, CSS, JavaScript và làm
+            việc với cơ sở dữ liệu MySQL, đồng thời có hiểu biết cơ bản về xây dựng REST API.
+          </p>
+        </section>
+
+        <section class="card" aria-labelledby="muc-tieu" data-reveal>
+          <h2 id="muc-tieu">Mục tiêu nghề nghiệp</h2>
+          <p>
+            Mục tiêu ngắn hạn của tôi là trở thành thực tập sinh hoặc Junior Developer trong môi
+            trường chuyên nghiệp, nơi tôi có thể học hỏi và tích lũy kinh nghiệm thực tế thông qua
+            dự án. Về dài hạn, tôi hướng đến trở thành Full-Stack Developer có khả năng phát triển
+            các ứng dụng web hoàn chỉnh, tối ưu hiệu năng và tham gia các dự án có quy mô lớn.
+          </p>
+        </section>
+
+        <section class="card" aria-labelledby="ky-nang" data-reveal>
+          <h2 id="ky-nang">Kỹ năng</h2>
+          <ul class="skills-list">
+            <li>HTML, CSS, JavaScript</li>
+            <li>Flutter</li>
+            <li>MySQL / SQL Server</li>
+            <li>REST API</li>
+          </ul>
+        </section>
+
+        <section class="card" aria-labelledby="du-an" data-reveal>
+          <h2 id="du-an">Dự án</h2>
+          <div class="projects">
+            <article class="project-card" data-reveal>
+              <h3>Hệ thống quản lý sinh viên</h3>
+              <p>
+                Tham gia phát triển website quản lý sinh viên theo nhóm, hỗ trợ các chức năng như
+                quản lý thông tin sinh viên, phân quyền người dùng và xử lý dữ liệu. Tôi đảm nhận
+                phát triển một số chức năng và kết nối với cơ sở dữ liệu.
+              </p>
+              <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">SQL Server</span>
+                <span class="tag">Java Backend</span>
+              </div>
+              <a
+                class="button-link"
+                href="https://github.com/TranBLong/APIRolesPremissions"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Xem GitHub
+              </a>
+            </article>
+
+            <article class="project-card" data-reveal>
+              <h3>Ứng dụng giao diện di động (Fellow4U)</h3>
+              <p>
+                Xây dựng giao diện ứng dụng di động dựa trên thiết kế có sẵn, tập trung vào bố cục
+                UI, hiển thị dữ liệu và tối ưu trải nghiệm người dùng trên thiết bị di động; đồng
+                thời thực hiện điều hướng giữa các màn hình và tích hợp dữ liệu qua API.
+              </p>
+              <div class="tags">
+                <span class="tag">Flutter</span>
+                <span class="tag">REST API</span>
+                <span class="tag">SQL Server</span>
+              </div>
+              <a
+                class="button-link"
+                href="https://github.com/TranBLong/ScreenFellow4U"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Xem GitHub
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="chung-chi" data-reveal>
+          <h2 id="chung-chi">Chứng chỉ</h2>
+          <div class="cert-grid">
+            <figure class="cert-card" data-reveal>
+              <img src="image/ChungChiGiaoDucQuocPhong.jpg" alt="Chứng chỉ Giáo dục Quốc phòng" />
+              <figcaption>Chứng chỉ Giáo dục Quốc phòng</figcaption>
+            </figure>
+
+            <figure class="cert-card" data-reveal>
+              <img src="image/TheCuTri.jpg" alt="Thẻ cử tri bầu cử nhiệm kỳ 2026-2031" />
+              <figcaption>
+                Thẻ cử tri cho cuộc bầu cử Đại biểu Quốc hội khóa XVI và Đại biểu Hội đồng Nhân dân
+                các cấp nhiệm kỳ 2026-2031.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="lien-he" data-reveal>
+          <h2 id="lien-he">Liên hệ</h2>
+          <ul class="contact-list">
+            <li>
+              GitHub:
+              <a href="https://github.com/TranBLong" target="_blank" rel="noopener noreferrer">
+                github.com/TranBLong
+              </a>
+            </li>
+            <li>
+              LinkedIn:
+              <a href="https://linkedin.com/in/longtranbao" target="_blank" rel="noopener noreferrer">
+                linkedin.com/in/longtranbao
+              </a>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const quickNavLinks = document.querySelectorAll('.quick-nav a[href^="#"]');
+
+      quickNavLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const targetId = link.getAttribute("href");
+          const target = targetId ? document.querySelector(targetId) : null;
+          if (!target) return;
+
+          event.preventDefault();
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+          history.replaceState(null, "", targetId);
+        });
+      });
+
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const revealItems = [...document.querySelectorAll("[data-reveal]")];
+
+      if (prefersReduced) {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      } else {
+        revealItems.forEach((item, index) => {
+          item.style.setProperty("--reveal-delay", `${Math.min(index * 45, 260)}ms`);
+        });
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              obs.unobserve(entry.target);
+            });
+          },
+          {
+            threshold: 0.16,
+            rootMargin: "0px 0px -8% 0px"
+          }
+        );
+
+        revealItems.forEach((item) => observer.observe(item));
+      }
+    </script>
+  </body>
+</html>
